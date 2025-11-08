@@ -11,6 +11,7 @@ root/lib/
 
 # Other
 node_modules/
+.turbo/
 build/
 out/
 tmp/

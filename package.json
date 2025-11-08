@@ -3,6 +3,7 @@
   "name": "keybr.com",
   "version": "0.0.0",
   "type": "module",
+  "packageManager": "npm@11.6.1",
   "homepage": "https://www.keybr.com",
   "license": "GPL-3",
   "author": "Aliaksandr Radzivanovich <aradzivanovich@gmail.com>",
@@ -15,12 +16,11 @@
     "scripts"
   ],
   "scripts": {
-    "postinstall": "husky && patch-package",
     "config-lint": "node scripts/config-lint.js",
     "translate": "node scripts/translate.js",
-    "clean": "lage clean --no-cache",
-    "compile": "lage compile --no-cache",
-    "test": "lage test --no-cache",
+    "clean": "turbo run clean",
+    "compile": "turbo run compile",
+    "test": "turbo run test",
     "lint": "eslint '{**/*,*}.{js,ts,tsx}'",
     "lint-fix": "eslint '{**/*,*}.{js,ts,tsx}' --fix",
     "stylelint": "stylelint '{**/*,*}.{less,css}'",
@@ -84,6 +84,7 @@
     "cheerio": "^1.1.2",
     "confusing-browser-globals": "^1.0.11",
     "rich-assert": "^0.0.3",
+    "turbo": "^2.6.0",
     "typescript": "~5.9.2"
   }
 }

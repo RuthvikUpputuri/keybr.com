@@ -1,0 +1,78 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "tasks": {
+    "clean": {
+      "cache": false
+    },
+    "compile": {
+      "dependsOn": ["^compile"],
+      "outputs": [".types/**"]
+    },
+    "test": {
+      "dependsOn": ["^test"],
+      "outputs": []
+    },
+    "build": {
+      "dependsOn": ["^build", "compile"],
+      "outputs": [
+        "root/lib/**",
+        "root/public/assets/**",
+        "root/public/assets/**/*.gz",
+        "root/public/assets/**/*.br"
+      ],
+      "env": ["NODE_ENV", "DATABASE_CLIENT", "DATABASE_URL"]
+    },
+    "build-dev": {
+      "dependsOn": ["compile"],
+      "outputs": [
+        "root/lib/**",
+        "root/public/assets/**"
+      ],
+      "env": ["NODE_ENV", "DATABASE_CLIENT", "DATABASE_URL"]
+    },
+    "watch": {
+      "dependsOn": ["compile"],
+      "persistent": true,
+      "cache": false
+    },
+    "start": {
+      "dependsOn": ["compile"],
+      "persistent": true,
+      "cache": false
+    },
+    "start-docker": {
+      "dependsOn": ["compile"],
+      "persistent": true,
+      "cache": false,
+      "env": ["NODE_ENV", "DATABASE_CLIENT", "DATABASE_URL"]
+    },
+    "lint": {
+      "outputs": []
+    },
+    "lint-fix": {
+      "outputs": [],
+      "cache": false
+    },
+    "stylelint": {
+      "outputs": []
+    },
+    "stylelint-fix": {
+      "outputs": [],
+      "cache": false
+    },
+    "format": {
+      "outputs": [],
+      "cache": false
+    },
+    "config-lint": {
+      "outputs": []
+    },
+    "translate": {
+      "outputs": [
+        "docs/translations_report.md",
+        "packages/keybr-intl/translations/**",
+        "packages/keybr-intl/lib/messages/**"
+      ]
+    }
+  }
+}
